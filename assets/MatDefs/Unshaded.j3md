@@ -1,0 +1,32 @@
+MaterialDef Simple {
+    MaterialParameters {
+        Texture2D ColorMap
+        TextureCubeMap SkyBox
+        Float Shininess
+        Color SpecularColor
+        Boolean UseSpecularNormal
+    }
+ 
+    Technique {
+        VertexShader GLSL100:   Shaders/bubbleVertexShader.vert
+        FragmentShader GLSL100: Shaders/bubbleFragmentShader.frag
+ 
+        WorldParameters {
+            WorldViewProjectionMatrix
+            Time
+            CameraPosition
+            WorldMatrix
+            NormalMatrix
+        }
+ 
+        RenderState {
+                Blend Alpha
+        }
+ 
+        Defines {
+            SPECULARCOLOR : SpecularColor
+            USESPECULARNORMAL : UseSpecularNormal
+        }
+    }
+ 
+}
